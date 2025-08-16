@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Homepage</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: url('wallpaper.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Clock in top right */
+    #clock {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 22px;
+      font-weight: bold;
+      padding: 10px 20px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      color: #00e0ff;
+      font-family: "Consolas", monospace;
+      box-shadow: 0 0 10px #00e0ff;
+    }
+
+    .search-container {
+      width: 60%;
+      max-width: 700px;
+      margin-bottom: 40px;
+    }
+
+    .search-container input {
+      width: 100%;
+      padding: 14px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      outline: none;
+    }
+
+    .shortcuts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 20px;
+      width: 60%;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .shortcut {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      padding: 15px;
+      transition: background 0.3s;
+    }
+
+    .shortcut:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .shortcut img {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 8px;
+    }
+
+    .shortcut a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Clock -->
+  <div id="clock"></div>
+
+  <!-- Search Bar -->
+  <div class="search-container">
+    <form action="https://www.google.com/search" method="get">
+      <input type="text" name="q" placeholder="Search with Google...">
+    </form>
+  </div>
+
+  <!-- Shortcuts -->
+  <div class="shortcuts">
+    <div class="shortcut">
+      <a href="https://www.youtube.com">
+        <img src="https://www.google.com/s2/favicons?sz=64&domain=youtube.com" alt="YouTube">
+        YouTube
+      </a>
+    </div>
+    <div class="shortcut">
+      <a href="https://www.netflix.com">
+        <img src="https://www.google.com/s2/favicons?sz=64&domain=netflix.com" alt="Netflix">
+        Netflix
+      </a>
+    </div>
+    <div class="shortcut">
+      <a href="https://www.roblox.com">
+        <img src="https://www.google.com/s2/favicons?sz=64&domain=roblox.com" alt="Roblox">
+        Roblox
+      </a>
+    </div>
+    <div class="shortcut">
+      <a href="https://drive.google.com">
+        <img src="https://www.google.com/s2/favicons?sz=64&domain=drive.google.com" alt="Google Drive">
+        Google Drive
+      </a>
+    </div>
+    <div class="shortcut">
+      <a href="https://chat.openai.com">
+        <img src="https://www.google.com/s2/favicons?sz=64&domain=openai.com" alt="ChatGPT">
+        ChatGPT
+      </a>
+    </div>
+  </div>
+
+  <!-- JS Clock -->
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const day = now.toLocaleDateString('en-US', { weekday: 'short' });
+      const date = now.getDate();
+      const month = now.toLocaleDateString('en-US', { month: 'short' });
+
+      document.getElementById('clock').textContent = `${hours}:${minutes}  ${day} ${month} ${date}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
+</body>
+</html>
